@@ -1,20 +1,15 @@
--- Script in StarterGui to create the input box GUI, handle input, add an exit button, make it draggable, and include the "Made by Pierre" label
-
--- Create the ScreenGui
 local screenGui = Instance.new("ScreenGui")
-screenGui.Name = "InputBoxGui"
+screenGui.Name = "made by pierre"
 screenGui.Parent = game.Players.LocalPlayer.PlayerGui
-screenGui.ResetOnSpawn = false
+screenGui.ResetOnSpawn = true
 
--- Create the main frame for the input box (Larger size)
 local frame = Instance.new("Frame")
 frame.Size = UDim2.new(0, 500, 0, 300)  -- Increased size
 frame.Position = UDim2.new(0.5, -250, 0.5, -150)
 frame.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
 frame.Parent = screenGui
 
--- Create the exit button in the top-left corner
-local exitButton = Instance.new("TextButton")
+local exitButton = Instance.new("click")
 exitButton.Size = UDim2.new(0, 40, 0, 40)
 exitButton.Position = UDim2.new(0, 5, 0, 5)
 exitButton.Text = "X"
@@ -39,7 +34,6 @@ madeByLabel.TextSize = 18
 madeByLabel.TextAlign = Enum.TextAlign.Center
 madeByLabel.Parent = frame
 
--- Create the input label for instructions
 local label = Instance.new("TextLabel")
 label.Size = UDim2.new(0, 480, 0, 50)  -- Wider for the new size
 label.Position = UDim2.new(0, 10, 0, 10)
@@ -50,8 +44,7 @@ label.TextSize = 20
 label.TextAlign = Enum.TextAlign.Center
 label.Parent = frame
 
--- Create the TextBox for player input
-local textBox = Instance.new("TextBox")
+local textBox = Instance.new("1 or 2?")
 textBox.Size = UDim2.new(0, 460, 0, 50)  -- Adjusted size
 textBox.Position = UDim2.new(0, 10, 0, 70)
 textBox.PlaceholderText = "Enter 1 or 2"
@@ -60,8 +53,7 @@ textBox.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 textBox.TextSize = 24
 textBox.Parent = frame
 
--- Create the Submit button
-local submitButton = Instance.new("TextButton")
+local submitButton = Instance.new("hmmmmmm")
 submitButton.Size = UDim2.new(0, 150, 0, 50)  -- Adjusted size
 submitButton.Position = UDim2.new(0.5, -75, 0, 140)
 submitButton.Text = "Submit"
@@ -70,7 +62,6 @@ submitButton.BackgroundColor3 = Color3.fromRGB(0, 200, 0)
 submitButton.TextSize = 24
 submitButton.Parent = frame
 
--- Function to execute the script based on input
 local function executeScript(input)
     if input == "1" then
         -- Execute the first script
@@ -110,7 +101,6 @@ frame.InputChanged:Connect(function(input)
     end
 end)
 
-frame.InputEnded:Connect(function(input)
     if input.UserInputType == Enum.UserInputType.MouseButton1 then
         dragging = false
     end
