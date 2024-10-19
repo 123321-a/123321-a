@@ -1,15 +1,20 @@
-local screenGui = Instance.new("ScreenGui")
-screenGui.Name = "made by pierre"
-screenGui.Parent = game.Players.LocalPlayer.PlayerGui
-screenGui.ResetOnSpawn = true
+-- Script in StarterGui to create the input box GUI, handle input, add an exit button, make it draggable, and include the "By Pierre" label
 
+-- Create the ScreenGui
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "InputBoxGui"
+screenGui.Parent = game.Players.LocalPlayer.PlayerGui
+screenGui.ResetOnSpawn = false
+
+-- Create the main frame for the input box (Larger size)
 local frame = Instance.new("Frame")
 frame.Size = UDim2.new(0, 500, 0, 300)  -- Increased size
 frame.Position = UDim2.new(0.5, -250, 0.5, -150)
 frame.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
 frame.Parent = screenGui
 
-local exitButton = Instance.new("click")
+-- Create the exit button in the top-left corner
+local exitButton = Instance.new("TextButton")
 exitButton.Size = UDim2.new(0, 40, 0, 40)
 exitButton.Position = UDim2.new(0, 5, 0, 5)
 exitButton.Text = "X"
@@ -23,17 +28,7 @@ exitButton.MouseButton1Click:Connect(function()
     screenGui:Destroy()  -- Destroy the GUI
 end)
 
--- Create the "Made by Pierre" label at the bottom
-local madeByLabel = Instance.new("TextLabel")
-madeByLabel.Size = UDim2.new(0, 500, 0, 50)
-madeByLabel.Position = UDim2.new(0, 0, 1, -50)  -- Positioned at the bottom of the frame
-madeByLabel.BackgroundTransparency = 1
-madeByLabel.Text = "Made by Pierre"
-madeByLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-madeByLabel.TextSize = 18
-madeByLabel.TextAlign = Enum.TextAlign.Center
-madeByLabel.Parent = frame
-
+-- Create the input label for instructions
 local label = Instance.new("TextLabel")
 label.Size = UDim2.new(0, 480, 0, 50)  -- Wider for the new size
 label.Position = UDim2.new(0, 10, 0, 10)
@@ -44,7 +39,8 @@ label.TextSize = 20
 label.TextAlign = Enum.TextAlign.Center
 label.Parent = frame
 
-local textBox = Instance.new("1 or 2?")
+-- Create the TextBox for player input
+local textBox = Instance.new("TextBox")
 textBox.Size = UDim2.new(0, 460, 0, 50)  -- Adjusted size
 textBox.Position = UDim2.new(0, 10, 0, 70)
 textBox.PlaceholderText = "Enter 1 or 2"
@@ -53,7 +49,8 @@ textBox.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 textBox.TextSize = 24
 textBox.Parent = frame
 
-local submitButton = Instance.new("hmmmmmm")
+-- Create the Submit button
+local submitButton = Instance.new("TextButton")
 submitButton.Size = UDim2.new(0, 150, 0, 50)  -- Adjusted size
 submitButton.Position = UDim2.new(0.5, -75, 0, 140)
 submitButton.Text = "Submit"
@@ -62,6 +59,7 @@ submitButton.BackgroundColor3 = Color3.fromRGB(0, 200, 0)
 submitButton.TextSize = 24
 submitButton.Parent = frame
 
+-- Function to execute the script based on input
 local function executeScript(input)
     if input == "1" then
         -- Execute the first script
@@ -80,6 +78,17 @@ submitButton.MouseButton1Click:Connect(function()
     local input = textBox.Text
     executeScript(input)
 end)
+
+-- Create the "By Pierre" label at the bottom
+local madeByLabel = Instance.new("TextLabel")
+madeByLabel.Size = UDim2.new(0, 500, 0, 50)
+madeByLabel.Position = UDim2.new(0, 0, 1, -50)  -- Positioned at the bottom of the frame
+madeByLabel.BackgroundTransparency = 1
+madeByLabel.Text = "By Pierre"
+madeByLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+madeByLabel.TextSize = 18
+madeByLabel.TextAlign = Enum.TextAlign.Center
+madeByLabel.Parent = frame
 
 -- Draggable Functionality
 local dragging = false
@@ -101,6 +110,7 @@ frame.InputChanged:Connect(function(input)
     end
 end)
 
+frame.InputEnded:Connect(function(input)
     if input.UserInputType == Enum.UserInputType.MouseButton1 then
         dragging = false
     end
